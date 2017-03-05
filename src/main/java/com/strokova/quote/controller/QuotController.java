@@ -72,7 +72,7 @@ public class QuotController {
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/me-last")
     public ResponseEntity<List<Quote>> last5(Principal principal) {
-        return ok(quoteService.serachLastByUsername(principal.getName()));
+        return ok(quoteService.searchLastByUsername(principal.getName()));
     }
 
     @ExceptionHandler(DeniedUpdateException.class)

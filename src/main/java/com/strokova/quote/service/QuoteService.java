@@ -20,5 +20,5 @@ public interface QuoteService {
 
     List<Quote> searchByUsername(String username);
 
-    List<Quote> serachLastByUsername(String username);
+    List<Quote> searchLastByUsername(String username);
 }

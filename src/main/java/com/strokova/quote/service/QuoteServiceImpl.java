@@ -71,8 +71,8 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
     @Override
-    public List<Quote> serachLastByUsername(String username) {
-        return quoteRepository.searchLast5ByUsername(username);
+    public List<Quote> searchLastByUsername(String username) {
+        return quoteRepository.searchLast5ByUsername(username).subList(0,5);
     }
 
 
