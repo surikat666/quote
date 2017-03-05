@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quotes</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+
+</head>
+<body>
+<script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/bootstrap-table.min.js}"></script>
+<script th:src="@{/js/chartist.min.js}"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a th:href="@{/profile}">Profile</a></li>
+            <li role="presentation" class="active"><a th:href="@{/top10}">Top 10</a></li>
+            <li role="presentation"><a th:href="@{/flop10}">Flop 10</a></li>
+            <li role="presentation"><a th:href="@{/last}">Last</a></li>
+        </ul>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-8">
+            <form class="well form-horizontal" th:action="@{/signup}" method="post">
+                <fieldset>
+                    <div class="row">
+                        <div class="form-group" th:if="${param.error}">
+                            <div class="col-md-offset-3 col-md-6 alert alert-danger"
+                                 role="alert">
+                                Error registration. Perhaps such a voter exists or entered passwords do not match
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="username">Login </label>
+                            <div class='col-md-8'>
+                                <div class="input-group" th:classappend="${param.error} ? has-error">
+                                    <div class='input-group date'>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                        <input type='text' id="username" class="form-control" name="username"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="password">Password</label>
+                            <div class='col-md-8'>
+                                <div class="input-group" th:classappend="${param.error} ? has-error">
+                                    <div class='input-group date'>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+                                        <input type='password' class="form-control" id="password" name="password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="confirmPassword">Confirm Password</label>
+                                <div class='col-md-8'>
+                                    <div class="input-group" th:classappend="${param.error} ? has-error">
+                                        <div class='input-group date'>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+                                            <input type='password' class="form-control" id="confirmPassword"
+                                                   name="confirmPassword">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label"></label>
+                                    <div class="col-md-8">
+                                        <button type="submit" class="btn btn-primary">Sign up <span
+                                                class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
