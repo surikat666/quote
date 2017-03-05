@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface QuoteScoreRepository extends CrudRepository<QuoteScore, Long> {
 
-    @Query("select qs.rateTime, sum(qs.score) FROM com.strokova.quote.model.QuoteScore qs where qs.quoteId =:id GROUP BY qs.rateTime order by qs.rateTime")
+    @Query(value = "SELECT qs.rate_time, sum(qs.score) OVER (PARTITION BY qs.quote_id ORDER BY qs.rate_time) FROM quote_scores qs WHERE qs.quote_id = :id ORDER BY qs.rate_time", nativeQuery = true)
     List<Object[]> evolutionByQuoteId(@Param("id") Long id);
 }

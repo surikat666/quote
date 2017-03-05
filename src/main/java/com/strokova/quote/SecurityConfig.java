@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/top10").failureUrl("/top10?error")
+                .and()
+                .logout().logoutSuccessUrl("/top10")
         ;
 
     }

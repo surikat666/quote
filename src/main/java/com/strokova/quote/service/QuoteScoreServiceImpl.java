@@ -7,7 +7,8 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -48,8 +49,8 @@ public class QuoteScoreServiceImpl implements QuoteScoreService {
     public DataEvolution getEvolutionQouteScores(Long quoteId) {
         List<Object[]> quoteScores = quoteScoreRepository
                 .evolutionByQuoteId(quoteId);
-        val labels = quoteScores.stream().map(arr -> arr[0]).map(time -> (LocalDateTime) time).map(formatter::format).collect(toList());
-        val scoresList = quoteScores.stream().map(arr -> arr[1]).map(time -> (Long) time).collect(toList());
+        val labels = quoteScores.stream().map(arr -> arr[0]).map(time -> (Timestamp) time).map(Timestamp::toLocalDateTime).map(formatter::format).collect(toList());
+        val scoresList = quoteScores.stream().map(arr -> arr[1]).map(time -> (BigInteger) time).map(BigInteger::longValue).collect(toList());
         return new DataEvolution(labels, scoresList);
     }
 }
